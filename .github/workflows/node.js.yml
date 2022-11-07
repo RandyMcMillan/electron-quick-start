@@ -5,9 +5,15 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+    - master
+    - 'releases/**'
+    - '**'
   pull_request:
-    branches: [ "master" ]
+    branches:
+    - master
+    - 'releases/**'
+    - '**'
 
 jobs:
   build:
@@ -25,7 +31,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        #cache: 'cd ./scripts && npm'
+    - run: sudo apt-get install libtool m4 make g++ autoconf # debian/ubuntu
     - run: npm rebuild
     - run: npm install
     - run: npm clean-install
