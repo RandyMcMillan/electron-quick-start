@@ -147,7 +147,7 @@ report:
 
 .PHONY: command
 ##	:	command		 	command sequence
-command: executable
+command:
 	@echo "command sequence here..."
 
 .PHONY: nvm
@@ -159,7 +159,7 @@ nvm:
 
 .PHONY: all
 ##	:	all			execute installer scripts
-all:- executable init 
+all:- nvm init 
 
 .PHONY: docs readme index
 index: docs
